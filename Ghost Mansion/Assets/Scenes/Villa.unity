@@ -756,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2MeterBox
       objectReference: {fileID: 0}
+    - target: {fileID: -996989660495133793, guid: 32c123bd5cdf42c478f859d348725a1b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 04d603ebd71243140af5f5f69c98e957, type: 2}
     - target: {fileID: 919132149155446097, guid: 32c123bd5cdf42c478f859d348725a1b, type: 3}
       propertyPath: m_Name
       value: "VillaW\xE4nde"
