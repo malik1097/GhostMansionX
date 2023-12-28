@@ -1,2 +1,3 @@
 # GhostMansionX
-VR Project 2023/2024
+HSD VR Project WS 2023/2024
+Team: Malik Arslan, Oliver Buco, Kieu Ly
