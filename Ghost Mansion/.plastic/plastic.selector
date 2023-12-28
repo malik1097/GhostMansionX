@@ -1,0 +1,4 @@
+repository "Ghost Mansion@unity_D3834FD2A636EC8B85A0@cloud"
+  path "/"
+    br "/main"
+    co "/main"
