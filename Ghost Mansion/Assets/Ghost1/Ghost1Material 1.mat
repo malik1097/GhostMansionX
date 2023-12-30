@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GhostMaterial
+  m_Name: Ghost1Material 1
   m_Shader: {fileID: -6465566751694194690, guid: ebdb64cca92bef044855c085663f6964, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -169,9 +169,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_39594e77c71d4eb48afcf997cda76117: {r: 0, g: 0.98080873, b: 1, a: 0}
+    - Color_39594e77c71d4eb48afcf997cda76117: {r: 1, g: 0.061572347, b: 0.051886797, a: 0}
     - Color_e649d97becec41be883dd5b6d677c0cc: {r: 0, g: 0, b: 0, a: 0}
-    - Color_f41ea9d6cc7943488a4bce7ca13f02e9: {r: 0.09723212, g: 0.1792453, b: 0.15190758, a: 0}
+    - Color_f41ea9d6cc7943488a4bce7ca13f02e9: {r: 0.31132078, g: 0.20452148, b: 0.2011837, a: 0}
     - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.62767, g: 0.8584906, b: 0.8584906, a: 1}
     - _Color: {r: 0.62767, g: 0.8584906, b: 0.8584906, a: 1}
