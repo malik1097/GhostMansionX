@@ -169,7 +169,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_39594e77c71d4eb48afcf997cda76117: {r: 1, g: 0.35442394, b: 0, a: 0}
+    - Color_39594e77c71d4eb48afcf997cda76117: {r: 2.2973971, g: 0.8108461, b: 0, a: 0}
     - Color_e649d97becec41be883dd5b6d677c0cc: {r: 0, g: 0, b: 0, a: 0}
     - Color_f41ea9d6cc7943488a4bce7ca13f02e9: {r: 0.09723212, g: 0.1792453, b: 0.15190758, a: 0}
     - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}
