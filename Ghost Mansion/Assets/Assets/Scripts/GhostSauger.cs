@@ -11,10 +11,11 @@ public class GhostSauger : MonoBehaviour
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
 
-    void SetColor(Color c)
-    {
-        debugPlane.GetComponent<Renderer>().materials[0].color = c;
-    }
+    public GameObject player;
+
+    [SerializeField] GhostBehaviour ghostBehaviour;
+
+    
 
     void Start()
     {
@@ -22,8 +23,21 @@ public class GhostSauger : MonoBehaviour
 
     void Update()
     {
+        catchGhost();
+
+    }
+
+
+    void SetColor(Color c)
+    {
+        debugPlane.GetComponent<Renderer>().materials[0].color = c;
+    }
+
+
+    void catchGhost()
+    {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, maxRange))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxRange))
         {
             lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
@@ -57,6 +71,20 @@ public class GhostSauger : MonoBehaviour
             lineRenderer.SetPosition(1, Vector3.forward * maxRange);
             SetColor(Color.white);
         }
+    }
 
+    Vector3 getPlayerPosition()
+    {
+        return player.transform.position;
+    }
+
+    void letGhostAppear()
+    {
+        Vector3 playerPos = getPlayerPosition();
+        Vector3 ghostPos = ghostBehaviour.getPosition();
+
+        float distance = Vector3.Distance(playerPos, ghostPos);
+
+        //if()
     }
 }
