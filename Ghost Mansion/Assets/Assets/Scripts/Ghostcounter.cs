@@ -50,7 +50,7 @@ public class Ghostcounter : MonoBehaviour
  
  void OnTriggerEnter(Collider other) 
     {
- // Check if the object the player collided with has the "PickUp" tag.
+ // Check if the object the player collided with has the "Ghost" tag.
  if (other.gameObject.CompareTag("Ghost")) 
         {
  // Deactivate the collided object (making it disappear).
