@@ -59,7 +59,7 @@ void OnTriggerStay(Collider other)
         Vector3 newScale = other.gameObject.transform.localScale;
 
         // Reduce the size of the collided object.
-        newScale *= 0.9f;
+        newScale *= 0.99f;
 
         // Check if the scale has reached or gone below 0.5.
         if (newScale.x <= 0.1f && newScale.y <= 0.1f && newScale.z <= 0.1f)

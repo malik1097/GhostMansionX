@@ -13,7 +13,7 @@ public class Testghostbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 defaultScale = new Vector3(1, 1, 1); 
+        Vector3 defaultScale = new Vector3(0.38f, 0.38f, 0.38f); 
         if (transform.localScale.x < defaultScale.x)
         {
             transform.localScale *= 1.001f; // You can adjust the growth rate as needed
