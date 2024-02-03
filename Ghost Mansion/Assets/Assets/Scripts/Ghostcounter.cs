@@ -19,16 +19,18 @@ public class Ghostcounter : MonoBehaviour
  private int count;
 
 
-
+ public GameObject CountObject;
  public TextMeshProUGUI countText;
 
+ public GameObject WinTextObject;
+
  // UI object to display winning text.
- public TextMeshProUGUI winTextObject;
+ public TextMeshProUGUI winText;
 
 //Timer für Ende
- //public GameObject Timer;
+public GameObject Timer;
 
-   
+public float TimeforEnd = 100;
 
 
  // Start is called before the first frame update.
@@ -40,21 +42,28 @@ public class Ghostcounter : MonoBehaviour
  // Initialize count to zero.
         count = 0;
 
- // Update the count display.
+
+
+
+  // Update the count display.
         SetCountText();
 
- // Initially set the win text to be inactive.
-        
+        // Initially set the win text to be inactive.
 
-       // winTextObject.SetActive(false);
+   
+
+
+       WinTextObject.SetActive(false);
     }
  
 
  // FixedUpdate is called once per fixed frame-rate frame.
   void FixedUpdate() 
-    {  
+    {
+        //get Time left from Timer
+        TimeforEnd = Timer.GetComponent<Timer>().TimeLeft;
+        SetEndText(TimeforEnd);
 
-   
     }
     
     
@@ -93,23 +102,34 @@ void OnTriggerStay(Collider other)
  
 
 
-    
-
-    
-
-
  // Function to update the displayed count of "PickUp" objects collected.
- void SetCountText() 
+ void SetCountText( ) 
     {
  // Update the count text with the current count.
         countText.text = "Count: " + count.ToString();
 
- // Check if the count has reached or exceeded the win condition.
- if (count >= 12)
-        {
- // Display the win text.
-        
-            winTextObject.SetActive(true);
-        }
+}
+
+
+
+// Function to update the displayed count of "PickUp" objects collected.
+void SetEndText(float TimeEnd)
+{
+    // Check if the count has reached or exceeded the win condition.
+    if (TimeEnd == 0)
+    {
+            // Display the win text.       
+            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS!";
+            WinTextObject.SetActive(true);
+            Timer.SetActive(false);
+            CountObject.SetActive(false);
     }
+   else
+    {
+        WinTextObject.SetActive(false);
+        Timer.SetActive(true);
+        CountObject.SetActive(true);
+    }
+}
+
 }
