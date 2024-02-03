@@ -23,7 +23,13 @@ public class Ghostcounter : MonoBehaviour
  public TextMeshProUGUI countText;
 
  // UI object to display winning text.
- public GameObject winTextObject;
+ public TextMeshProUGUI winTextObject;
+
+//Timer für Ende
+ //public GameObject Timer;
+
+   
+
 
  // Start is called before the first frame update.
  void Start()
@@ -38,7 +44,9 @@ public class Ghostcounter : MonoBehaviour
         SetCountText();
 
  // Initially set the win text to be inactive.
-        winTextObject.SetActive(false);
+        
+
+       // winTextObject.SetActive(false);
     }
  
 
@@ -100,6 +108,7 @@ void OnTriggerStay(Collider other)
  if (count >= 12)
         {
  // Display the win text.
+        
             winTextObject.SetActive(true);
         }
     }
