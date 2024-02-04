@@ -29,16 +29,17 @@ public class GhostSauger : MonoBehaviour
         {
             lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
-            if (OVRInput.Get(b))
-            {
-                particleSystem.gameObject.SetActive(true);
+            if (hit.transform.tag.Contains(ghostTag))
+           {
+               
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
+                         particleSystem.gameObject.SetActive(true);
                         rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
-                        SetColor(Color.green);
+                         SetColor(Color.red);
                     }
                     else
                     {
@@ -57,10 +58,10 @@ public class GhostSauger : MonoBehaviour
             }
         }
         else
-        {
-            lineRenderer.SetPosition(1, Vector3.forward * maxRange);
-            SetColor(Color.white);
-        }
+{
+          lineRenderer.SetPosition(1, Vector3.forward * maxRange);
+           SetColor(Color.white);
+       }
 
     }
 }

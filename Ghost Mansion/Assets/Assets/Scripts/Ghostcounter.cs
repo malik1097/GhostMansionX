@@ -72,7 +72,7 @@ public float TimeforEnd = 100;
 void OnTriggerStay(Collider other) 
 {
     // Check if the object the player collided with has the "Ghost" tag.
-    if (other != null && other.gameObject.CompareTag("Ghost")) 
+    if (other != null && other.gameObject.CompareTag("Ghost") ) 
     {
         // Get the current scale of the collided object.
         Vector3 newScale = other.gameObject.transform.localScale;
@@ -125,6 +125,7 @@ void SetEndText(float TimeEnd)
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
+
             if (OVRInput.Get(b))
             {
             SceneManager.LoadScene("Villa");
