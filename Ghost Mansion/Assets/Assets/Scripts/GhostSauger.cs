@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GhostSauger : MonoBehaviour
 {
     public float speed;
+    public float vacSpeed;
     public float maxRange;
     public string ghostTag;
     public OVRInput.Button b;
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
+
+    public ParticleSystem particleSystem;
+
+    public Boolean suck;
+
+    public GameObject vacuum;
+    public float shrinkSpeed;
 
     void SetColor(Color c)
     {
@@ -18,24 +28,47 @@ public class GhostSauger : MonoBehaviour
 
     void Start()
     {
+        //particleSystem.gameObject.SetActive(false);
     }
 
     void Update()
     {
+        catchGhost();
+    }
+
+    public void catchGhost()
+    {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, maxRange))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxRange))
         {
             lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
             if (OVRInput.Get(b))
             {
+                suck = true;
+                particleSystem.gameObject.SetActive(true);
+              
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
-                        rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
+                        //rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
+                        //hit.transform.position -= transform.forward * Time.deltaTime * speed;
+
+                        Vector3 ghostPos = hit.transform.position;
+                        Vector3 vacuumPos = vacuum.transform.position;
+
+                        float step = vacSpeed * Time.deltaTime;
+
+                        hit.transform.position = Vector3.MoveTowards(ghostPos, vacuumPos, step);
+
+                        float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
+
+
+
                         SetColor(Color.green);
+
                     }
                     else
                     {
@@ -49,7 +82,9 @@ public class GhostSauger : MonoBehaviour
             }
             else
             {
+                suck = false;
                 SetColor(Color.cyan);
+               // particleSystem.gameObject.SetActive(false);
             }
         }
         else
@@ -57,6 +92,7 @@ public class GhostSauger : MonoBehaviour
             lineRenderer.SetPosition(1, Vector3.forward * maxRange);
             SetColor(Color.white);
         }
-
     }
+        
+
 }

@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Ghostcounter : MonoBehaviour
 {
@@ -27,14 +28,18 @@ public class Ghostcounter : MonoBehaviour
  // UI object to display winning text.
  public TextMeshProUGUI winText;
 
-//Timer für Ende
+//Timer fï¿½r Ende
 public GameObject Timer;
 
 public float TimeforEnd = 100;
 
 
- // Start is called before the first frame update.
- void Start()
+ public OVRInput.Button b;
+
+ [SerializeField] GhostSauger sauger;
+
+    // Start is called before the first frame update.
+    void Start()
     {
  // Get and store the Rigidbody component attached to the object.
         rb = GetComponent<Rigidbody>();
@@ -70,7 +75,7 @@ public float TimeforEnd = 100;
 void OnTriggerStay(Collider other) 
 {
     // Check if the object the player collided with has the "Ghost" tag.
-    if (other != null && other.gameObject.CompareTag("Ghost")) 
+    if (other != null && other.gameObject.CompareTag("Ghost") && sauger.suck == true) 
     {
         // Get the current scale of the collided object.
         Vector3 newScale = other.gameObject.transform.localScale;
@@ -119,11 +124,17 @@ void SetEndText(float TimeEnd)
     if (TimeEnd == 0)
     {
             // Display the win text.       
-            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS!";
+            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS! \n\nPress A to Restart";
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
-    }
+
+            if (OVRInput.Get(b))
+            {
+                SceneManager.LoadScene("Villa");
+
+            }
+        }
    else
     {
         WinTextObject.SetActive(false);
