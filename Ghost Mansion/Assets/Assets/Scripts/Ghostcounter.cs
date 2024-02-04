@@ -9,13 +9,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class Ghostcounter : MonoBehaviour
 {
  // Rigidbody of the player.
  private Rigidbody rb; 
 
- 
+ public OVRInput.Button b;
  private int count;
 
 
@@ -27,7 +29,7 @@ public class Ghostcounter : MonoBehaviour
  // UI object to display winning text.
  public TextMeshProUGUI winText;
 
-//Timer für Ende
+//Timer fï¿½r Ende
 public GameObject Timer;
 
 public float TimeforEnd = 100;
@@ -119,10 +121,15 @@ void SetEndText(float TimeEnd)
     if (TimeEnd == 0)
     {
             // Display the win text.       
-            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS!";
+            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS! \n\nPress B to Restart";
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
+            if (OVRInput.Get(b))
+            {
+            SceneManager.LoadScene("Villa");
+
+            }
     }
    else
     {

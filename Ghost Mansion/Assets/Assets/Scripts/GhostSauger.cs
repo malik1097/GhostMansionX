@@ -10,6 +10,7 @@ public class GhostSauger : MonoBehaviour
     public OVRInput.Button b;
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
+     public ParticleSystem particleSystem;
 
     void SetColor(Color c)
     {
@@ -18,6 +19,7 @@ public class GhostSauger : MonoBehaviour
 
     void Start()
     {
+        particleSystem.gameObject.SetActive(false);
     }
 
     void Update()
@@ -29,6 +31,7 @@ public class GhostSauger : MonoBehaviour
 
             if (OVRInput.Get(b))
             {
+                particleSystem.gameObject.SetActive(true);
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
@@ -49,6 +52,7 @@ public class GhostSauger : MonoBehaviour
             }
             else
             {
+                particleSystem.gameObject.SetActive(false);
                 SetColor(Color.cyan);
             }
         }
