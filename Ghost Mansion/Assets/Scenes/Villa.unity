@@ -1523,6 +1523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3369349491546191242, guid: 23de86f83972b6b4a9984444ac61cc20, type: 3}
+      propertyPath: m_TagString
+      value: Ghost
+      objectReference: {fileID: 0}
     - target: {fileID: 3389147584125668178, guid: 23de86f83972b6b4a9984444ac61cc20, type: 3}
       propertyPath: m_Name
       value: animation_ghostv2 (1)
@@ -1700,6 +1704,10 @@ PrefabInstance:
     - target: {fileID: 2195305198524929428, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755370592762230952, guid: 65b891f906e0450439e303d23c288434, type: 3}
+      propertyPath: m_TagString
+      value: Ghost
       objectReference: {fileID: 0}
     - target: {fileID: 3879639903916885616, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_Name
@@ -2648,6 +2656,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1937667969}
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1937667970}
   m_SourcePrefab: {fileID: 100100000, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
 --- !u!4 &927462792 stripped
 Transform:
@@ -9838,6 +9849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3369349491546191242, guid: 23de86f83972b6b4a9984444ac61cc20, type: 3}
+      propertyPath: m_TagString
+      value: Ghost
+      objectReference: {fileID: 0}
     - target: {fileID: 3389147584125668178, guid: 23de86f83972b6b4a9984444ac61cc20, type: 3}
       propertyPath: m_Name
       value: animation_ghostv2
@@ -10274,6 +10289,33 @@ MonoBehaviour:
   TimeforEnd: 100
   b: 1
   sauger: {fileID: 232482779}
+--- !u!54 &1937667970
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937667962}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1948868471
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,11 +61,17 @@ public class GhostSauger : MonoBehaviour
 
                         Vector3 ghostPos = hit.transform.position;
                         Vector3 vacuumPos = vacuum.transform.position;
+                        Vector3 newScale = hit.transform.localScale;
 
                         float step = vacSpeed * Time.deltaTime;
 
                         hit.transform.position = Vector3.MoveTowards(ghostPos, vacuumPos, step);
 
+                        newScale *= 0.99f;
+                        if (newScale.x >= 0.1f && newScale.y >= 0.1f && newScale.z >= 0.1f)
+                        {
+                            newScale *= 0.99f;
+                        }
                         //float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
                         //float shrinkTime = distance / shrinkSpeed;
 
@@ -77,9 +83,9 @@ public class GhostSauger : MonoBehaviour
 
                         //if(newScale.x <= 0.1f && newScale.y <= 0.1f && newScale.z <= 0.1f)
                         //{
-                            
+
                         //}
-                    
+
 
 
                         SetColor(Color.green);

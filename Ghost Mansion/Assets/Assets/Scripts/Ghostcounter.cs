@@ -104,7 +104,7 @@ public float TimeforEnd = 100;
     //}
 
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         // Check if the object the player collided with has the "Ghost" tag.
         if (other.gameObject.tag.Contains("Ghost") && sauger.suck == true)
