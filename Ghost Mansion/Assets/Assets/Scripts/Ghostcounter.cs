@@ -106,11 +106,14 @@ public float TimeforEnd = 100;
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the object the player collided with has the "Ghost" tag.
-        if (other.gameObject.tag.Contains("Ghost") && sauger.suck == true)
+        // Check if the object the player collided with has the "Ghost" tag. && sauger.suck == true
+        if (other.gameObject.tag.Contains("Ghost") )
         {
             // Deactivate the collided object (making it disappear).
             other.gameObject.SetActive(false);
+
+             AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
 
             // Increment the count of "PickUp" objects collected.
             count = count + 1;

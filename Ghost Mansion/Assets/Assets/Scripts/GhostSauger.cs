@@ -31,7 +31,7 @@ public class GhostSauger : MonoBehaviour
 
     void Start()
     {
-        //particleSystem.gameObject.SetActive(false);
+        particleSystem.gameObject.SetActive(false);
     }
 
     void Update()
