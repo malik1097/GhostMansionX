@@ -485,6 +485,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7950404882874061604, guid: 65b891f906e0450439e303d23c288434, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3417357
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950404882874061604, guid: 65b891f906e0450439e303d23c288434, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0055843005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -770,6 +778,7 @@ MonoBehaviour:
   particleSystem: {fileID: 1477676253}
   suck: 0
   vacuum: {fileID: 143671913}
+  shrinkSpeed: 0
 --- !u!1 &301456518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &553132958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,7 +1372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553132957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70751e0d30bc44c7890d5210247c90c, type: 3}
   m_Name: 
@@ -2627,15 +2636,65 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 553132962}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927462793}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927462794}
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1937667966}
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1937667969}
   m_SourcePrefab: {fileID: 100100000, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
 --- !u!4 &927462792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
   m_PrefabInstance: {fileID: 927462791}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &927462793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143671913}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70751e0d30bc44c7890d5210247c90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CountObject: {fileID: 2026194256}
+  countText: {fileID: 2026194258}
+  WinTextObject: {fileID: 70844601}
+  winText: {fileID: 70844603}
+  Timer: {fileID: 1724054474}
+  TimeforEnd: 10
+  b: 0
+  sauger: {fileID: 232482779}
+--- !u!65 &927462794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143671913}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &959578036
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,6 +10254,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 21.480602, y: 12.93624, z: 12.941233}
   m_Center: {x: 2.0678573, y: 3.3388252, z: 4.918749}
+--- !u!114 &1937667969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937667962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70751e0d30bc44c7890d5210247c90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CountObject: {fileID: 2026194256}
+  countText: {fileID: 2026194258}
+  WinTextObject: {fileID: 70844601}
+  winText: {fileID: 70844603}
+  Timer: {fileID: 1724054474}
+  TimeforEnd: 100
+  b: 1
+  sauger: {fileID: 232482779}
 --- !u!1 &1948868471
 GameObject:
   m_ObjectHideFlags: 0

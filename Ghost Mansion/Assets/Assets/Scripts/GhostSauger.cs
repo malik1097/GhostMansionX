@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,6 +21,8 @@ public class GhostSauger : MonoBehaviour
 
     public GameObject vacuum;
     public float shrinkSpeed;
+
+    private bool colliding = false;
 
     void SetColor(Color c)
     {
@@ -63,8 +66,20 @@ public class GhostSauger : MonoBehaviour
 
                         hit.transform.position = Vector3.MoveTowards(ghostPos, vacuumPos, step);
 
-                        float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
+                        //float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
+                        //float shrinkTime = distance / shrinkSpeed;
 
+                        //Vector3 newScale = hit.transform.localScale;
+                        //newScale *= 0.99f;
+
+                        ////yield return new WaitForSeconds(shrinkTime);
+
+
+                        //if(newScale.x <= 0.1f && newScale.y <= 0.1f && newScale.z <= 0.1f)
+                        //{
+                            
+                        //}
+                    
 
 
                         SetColor(Color.green);
@@ -93,6 +108,12 @@ public class GhostSauger : MonoBehaviour
             SetColor(Color.white);
         }
     }
-        
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == ghostTag)
+        {
+            collision.collider.transform.gameObject.SetActive(false);
+        }
+    }
 }

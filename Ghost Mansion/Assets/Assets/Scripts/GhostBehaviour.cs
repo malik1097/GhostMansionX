@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-
 public class GhostBehaviour : MonoBehaviour
 {
     //GameObject ghost;
@@ -41,9 +40,8 @@ public class GhostBehaviour : MonoBehaviour
         spawns[4] = new Vector3(-18.97742f, 0.5934364f, 20.27015f);
 
 
-        //int rs = new Random.Range(0, spawns.Length);
-
-        //ghost.transform.position = setPosition(spawns[rs]);
+        int rs = UnityEngine.Random.Range(0, spawns.Length);
+        this.transform.position = spawns[rs];
 
 
     }
@@ -61,11 +59,6 @@ public class GhostBehaviour : MonoBehaviour
     public Vector3 getPosition()
     {
         return this.transform.position;
-    }
-
-    public void setPosition(Vector3 position)
-    {
-        this.transform.position = position;
     }
 
     

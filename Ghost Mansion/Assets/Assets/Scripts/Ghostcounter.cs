@@ -70,50 +70,67 @@ public float TimeforEnd = 100;
         SetEndText(TimeforEnd);
 
     }
-    
-    
-void OnTriggerStay(Collider other) 
-{
+
+
+    // void OnTriggerStay(Collider other) 
+    //{
     // Check if the object the player collided with has the "Ghost" tag.
-    if (other != null && other.gameObject.CompareTag("Ghost") && sauger.suck == true) 
+    //if (other != null && other.gameObject.CompareTag("Ghost") && sauger.suck == true) 
+    //{
+    //    // Get the current scale of the collided object.
+    //    Vector3 newScale = other.gameObject.transform.localScale;
+
+    //    // Reduce the size of the collided object.
+    //    newScale *= 0.99f;
+
+    //    // Check if the scale has reached or gone below 0.5.
+    //    if (newScale.x <= 0.1f && newScale.y <= 0.1f && newScale.z <= 0.1f)
+    //    {
+    //       // If the scale is 0.5 or less, deactivate the object.
+    //        other.gameObject.SetActive(false);
+    //    count = count + 1;
+    //    SetCountText();
+    //}
+    //else
+    //{
+    //    // Update the scale of the object.
+    //    other.gameObject.transform.localScale = newScale;
+    //}
+    //}
+    // else{
+
+    //}
+
+    //}
+
+
+    void OnTriggerStay(Collider other)
     {
-        // Get the current scale of the collided object.
-        Vector3 newScale = other.gameObject.transform.localScale;
-
-        // Reduce the size of the collided object.
-        newScale *= 0.99f;
-
-        // Check if the scale has reached or gone below 0.5.
-        if (newScale.x <= 0.1f && newScale.y <= 0.1f && newScale.z <= 0.1f)
+        // Check if the object the player collided with has the "Ghost" tag.
+        if (other.gameObject.tag.Contains("Ghost") && sauger.suck == true)
         {
-            // If the scale is 0.5 or less, deactivate the object.
+            // Deactivate the collided object (making it disappear).
             other.gameObject.SetActive(false);
+
+            // Increment the count of "PickUp" objects collected.
             count = count + 1;
+
+            // Update the count display.
             SetCountText();
         }
-        else
-        {
-            // Update the scale of the object.
-            other.gameObject.transform.localScale = newScale;
-        }
     }
-    else{
-
-    }
-}
 
 
 
- 
 
 
- // Function to update the displayed count of "PickUp" objects collected.
- void SetCountText( ) 
+    // Function to update the displayed count of "PickUp" objects collected.
+    void SetCountText( ) 
     {
  // Update the count text with the current count.
         countText.text = "Count: " + count.ToString();
 
-}
+    }
 
 
 
