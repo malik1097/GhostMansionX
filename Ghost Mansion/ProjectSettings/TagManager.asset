@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ghost
   - Ghost_shrink
+  - Interact
   layers:
   - Default
   - TransparentFX
