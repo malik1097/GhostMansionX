@@ -68,9 +68,9 @@ public OVRInput.Button d;
   void FixedUpdate() 
     {
         if (OVRInput.Get(d))
-    {
-   TutorialObject.SetActive(false);
-    }
+         {
+             TutorialObject.SetActive(false);
+        }
        
         //get Time left from Timer
         TimeforEnd = Timer.GetComponent<Timer>().TimeLeft;
