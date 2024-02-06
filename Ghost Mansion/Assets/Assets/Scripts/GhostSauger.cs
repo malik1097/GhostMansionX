@@ -15,6 +15,8 @@ public class GhostSauger : MonoBehaviour
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
 
+    public string interactTag;
+
     public GameObject particleSystem;
 
     public Boolean suck;
@@ -58,6 +60,11 @@ public class GhostSauger : MonoBehaviour
 
             if (OVRInput.Get(b))
             {
+                if (hit.transform.tag.Contains(interactTag))
+                {
+                    Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                    rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
+                }
                 suck = true;
                 particleSystem.SetActive(true);
 
@@ -66,6 +73,8 @@ public class GhostSauger : MonoBehaviour
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+
+                   
                     if (rb != null)
                     {
                         //rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
