@@ -16,7 +16,7 @@ public class GhostSauger : MonoBehaviour
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
 
-    public ParticleSystem particleSystem;
+    public GameObject particleSystem;
 
     public Boolean suck;
 

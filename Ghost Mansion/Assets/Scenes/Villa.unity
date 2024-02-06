@@ -500,15 +500,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4511743999435201738, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4511743999435201738, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 4511743999435201738, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.78
+      value: 13.14
       objectReference: {fileID: 0}
     - target: {fileID: 4511743999435201738, guid: 65b891f906e0450439e303d23c288434, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   b: 2097152
   debugPlane: {fileID: 354677752}
   lineRenderer: {fileID: 2031653001}
-  particleSystem: {fileID: 1477676253}
+  particleSystem: {fileID: 435452099}
   suck: 0
   vacuum: {fileID: 143671913}
   shrinkSpeed: 0
@@ -1779,6 +1779,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 792659759}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &435452099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435452100}
+  m_Layer: 0
+  m_Name: staubsaugerparticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &435452100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435452099}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 2.8218112, y: -4.3552437, z: -59.03633}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1477676251}
+  m_Father: {fileID: 927462792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &455011534 stripped
 Transform:
@@ -5034,7 +5066,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 1477676251}
+      addedObject: {fileID: 435452100}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf4d778d1d119b74fb15a18295473a89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 553132962}
@@ -7421,12 +7453,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477676250}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.167, z: -0.55}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1287245, y: 1.6752974, z: -23.394533}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 927462792}
+  m_Father: {fileID: 435452100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1477676252
 ParticleSystemRenderer:
@@ -12239,7 +12271,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f88547a79df934dc993a50b016b21db4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12689,7 +12721,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666022475}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edd130447e0b1425a90d0c855beb4cd6, type: 3}
