@@ -7,6 +7,8 @@ using UnityEngine;
 public class GhostBehaviour : MonoBehaviour
 {
     //GameObject ghost;
+    public GameObject prefab;
+    private Vector3 randSpawn;
     
 
     // Start is called before the first frame update
@@ -14,7 +16,8 @@ public class GhostBehaviour : MonoBehaviour
     {
         //disappear();
         //randomStartposition();
-        randomSpawnPosition();
+        //randomSpawnPosition();
+        ghostStart();
     }
 
     // Update is called once per frame
@@ -29,19 +32,22 @@ public class GhostBehaviour : MonoBehaviour
         Vector3 randomPosition = new Vector3(Random.Range(-20, 20), Random.Range(-5, 20), Random.Range(2, 6));
     } */
 
-    public void randomSpawnPosition()
+    public Vector3 randomSpawnPosition()
     {
-        Vector3[] spawns = new Vector3[5];
+        Vector3[] spawns = new Vector3[2];
 
-        spawns[0] = new Vector3(-10.85048f, -1.865619f, 6.553421f);
-        spawns[1] = new Vector3(-9.792572f, -0.2184101f, 9.876396f);
-        spawns[2] = new Vector3(1.442768f, 2.088465f, 19.90268f);
-        spawns[3] = new Vector3(14.74884f, -0.003983911f, 16.1106f);
-        spawns[4] = new Vector3(-18.97742f, 0.5934364f, 20.27015f);
+        //spawns[0] = new Vector3(-10.85048f, -1.865619f, 6.553421f);
+        //spawns[1] = new Vector3(-9.792572f, -0.2184101f, 9.876396f);
+        spawns[0] = new Vector3(1.442768f, 2.088465f, 19.90268f);
+        //spawns[3] = new Vector3(14.74884f, -0.003983911f, 16.1106f);
+        spawns[1] = new Vector3(-18.97742f, 0.5934364f, 20.27015f);
 
 
         int rs = UnityEngine.Random.Range(0, spawns.Length);
-        this.transform.position = spawns[rs];
+        randSpawn = spawns[rs];
+        this.transform.position = randSpawn;
+
+        return randSpawn;
 
 
     }
@@ -49,11 +55,20 @@ public class GhostBehaviour : MonoBehaviour
     public void disappear()
     {
         //ghost.SetActive(false);
+        Destroy(prefab);
     }
 
     public void appear()
     {
+        prefab.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public void ghostStart()
+    {
+        Vector3 startPos = new Vector3(-0.4654015f, 2.26f, 13.28f);
         //ghost.SetActive(true);
+        Instantiate(prefab, startPos, Quaternion.identity);
+        prefab.GetComponent<MeshRenderer>().enabled = true;
     }
 
     public Vector3 getPosition()

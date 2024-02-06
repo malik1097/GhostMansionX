@@ -15,7 +15,7 @@ public class GhostSauger : MonoBehaviour
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
 
-    public ParticleSystem particleSystem;
+    public GameObject particleSystem;
 
     public Boolean suck;
 
@@ -23,6 +23,13 @@ public class GhostSauger : MonoBehaviour
     public float shrinkSpeed;
 
     private bool colliding = false;
+    private bool isCloseEnough;
+
+    private AudioSource audioSource;
+
+    [SerializeField] GhostBehaviour gb;
+
+
 
     void SetColor(Color c)
     {
@@ -31,12 +38,14 @@ public class GhostSauger : MonoBehaviour
 
     void Start()
     {
-        particleSystem.gameObject.SetActive(false);
+        particleSystem.SetActive(false);
     }
 
     void Update()
     {
         catchGhost();
+        closeEnough();
+        ghostAppear();
     }
 
     public void catchGhost()
@@ -46,11 +55,14 @@ public class GhostSauger : MonoBehaviour
         {
             lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
+
             if (OVRInput.Get(b))
             {
                 suck = true;
-                particleSystem.gameObject.SetActive(true);
-              
+                particleSystem.SetActive(true);
+
+                //playAudio();
+
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
@@ -105,7 +117,9 @@ public class GhostSauger : MonoBehaviour
             {
                 suck = false;
                 SetColor(Color.cyan);
-               // particleSystem.gameObject.SetActive(false);
+                particleSystem.SetActive(false);
+                //stopAudio();
+               
             }
         }
         else
@@ -115,11 +129,39 @@ public class GhostSauger : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //public void playAudio()
+    //{
+    //    audioSource.GetComponent<AudioSource>().Play();
+    //}
+
+    //public void stopAudio()
+    //{
+    //    audioSource.GetComponent<AudioSource>().Stop();
+    //}
+
+    void closeEnough()
     {
-        if(collision.collider.tag == ghostTag)
+        float close = Vector3.Distance(this.transform.position, gb.transform.position);
+        if (close <= 50)
         {
-            collision.collider.transform.gameObject.SetActive(false);
+            isCloseEnough = true;
         }
     }
+
+    void ghostAppear()
+    {
+        if (isCloseEnough)
+        {
+            gb.appear();
+        }
+    }
+
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.collider.tag == ghostTag)
+    //    {
+    //        collision.collider.transform.gameObject.SetActive(false);
+    //    }
+    //}
 }
