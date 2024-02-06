@@ -113,7 +113,7 @@ public class GhostSauger : MonoBehaviour
             {
                 suck = false;
                 SetColor(Color.cyan);
-               // particleSystem.gameObject.SetActive(false);
+                particleSystem.gameObject.SetActive(false);
             }
         }
         else
