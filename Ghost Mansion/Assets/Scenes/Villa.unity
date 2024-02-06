@@ -1273,6 +1273,7 @@ MonoBehaviour:
   vacSpeed: 1
   maxRange: 10
   ghostTag: Ghost
+  interactTag: Interact
   b: 2097152
   debugPlane: {fileID: 354677752}
   lineRenderer: {fileID: 2031653001}
@@ -4026,6 +4027,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalVillaMap
       objectReference: {fileID: 0}
+    - target: {fileID: 1192970077492888097, guid: ee13b1ab63fd4472d84b40c30f94d889, type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862671983678610497, guid: ee13b1ab63fd4472d84b40c30f94d889, type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 2440198431548194503, guid: ee13b1ab63fd4472d84b40c30f94d889, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -4110,6 +4119,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0739718fd4d784a1ab1643917ea6cea3, type: 2}
+    - target: {fileID: 6030038753615433695, guid: ee13b1ab63fd4472d84b40c30f94d889, type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 6141167171547163034, guid: ee13b1ab63fd4472d84b40c30f94d889, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

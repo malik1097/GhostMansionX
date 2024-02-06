@@ -158,6 +158,7 @@ void SetEndText(float TimeEnd)
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
+            TutorialObject.SetActive(false);
 
             if (OVRInput.Get(b))
             {

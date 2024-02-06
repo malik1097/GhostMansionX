@@ -11,6 +11,7 @@ public class GhostSauger : MonoBehaviour
     public float vacSpeed;
     public float maxRange;
     public string ghostTag;
+     public string interactTag;
     public OVRInput.Button b;
     public GameObject debugPlane;
     public LineRenderer lineRenderer;
@@ -50,7 +51,14 @@ public class GhostSauger : MonoBehaviour
             {
                 suck = true;
                 particleSystem.gameObject.SetActive(true);
-              
+              //Vacuum Cleaner interacts with objects
+              if (hit.transform.tag.Contains(interactTag))
+              {
+                 Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
+              }
+
+              //Vacuum Cleaner sucki
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
