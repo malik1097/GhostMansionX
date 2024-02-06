@@ -24,16 +24,17 @@ public class Ghostcounter : MonoBehaviour
  public TextMeshProUGUI countText;
 
  public GameObject WinTextObject;
-
- // UI object to display winning text.
  public TextMeshProUGUI winText;
+
+public GameObject TutorialObject;
+
 
 //Timer f�r Ende
 public GameObject Timer;
 
 public float TimeforEnd = 100;
 
-
+public OVRInput.Button d;
  public OVRInput.Button b;
 
  [SerializeField] GhostSauger sauger;
@@ -53,21 +54,30 @@ public float TimeforEnd = 100;
   // Update the count display.
         SetCountText();
 
-        // Initially set the win text to be inactive.
+
 
    
 
-
+    
        WinTextObject.SetActive(false);
+       TutorialObject.SetActive(true);
     }
  
 
  // FixedUpdate is called once per fixed frame-rate frame.
   void FixedUpdate() 
     {
+        if (OVRInput.Get(d))
+    {
+   TutorialObject.SetActive(false);
+    }
+       
         //get Time left from Timer
         TimeforEnd = Timer.GetComponent<Timer>().TimeLeft;
         SetEndText(TimeforEnd);
+
+
+
 
     }
 
