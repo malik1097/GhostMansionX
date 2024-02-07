@@ -4077,8 +4077,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.78
-  m_fontSizeBase: 40.78
+  m_fontSize: 38.2
+  m_fontSizeBase: 38.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6628,6 +6628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93189e3bbbe79446bba40d926c51eb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1 &1090449832
 GameObject:
   m_ObjectHideFlags: 0
@@ -12974,6 +12975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a0a3da0a63949058607749e5ff2360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
 --- !u!1 &1522804389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3389147584125668178, guid: 23de86f83972b6b4a9984444ac61cc20, type: 3}
@@ -12991,6 +12993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e902edeffe504a25885e748e360161c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
 --- !u!1 &1527968238
 GameObject:
   m_ObjectHideFlags: 0
@@ -14074,6 +14077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a0a3da0a63949058607749e5ff2360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1 &1777432140
 GameObject:
   m_ObjectHideFlags: 0
@@ -14196,6 +14200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e902edeffe504a25885e748e360161c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1001 &1798035888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15676,6 +15681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93189e3bbbe79446bba40d926c51eb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
 --- !u!114 &2046258690
 MonoBehaviour:
   m_ObjectHideFlags: 0

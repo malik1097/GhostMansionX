@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class YellowGhostBehaviour : MonoBehaviour
 {
+
+    public int speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class YellowGhostBehaviour : MonoBehaviour
 
     public void appear()
     {
+        spawnSize();
         foreach (Transform child in transform)
         {
             MeshRenderer renderer = child.GetComponent<MeshRenderer>();
@@ -92,5 +95,10 @@ public class YellowGhostBehaviour : MonoBehaviour
     {
         this.transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
 
+    }
+
+    public void spawnSize()
+    {
+        this.transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0.38f, 0.38f, 0.38f), Time.deltaTime * speed);
     }
 }
