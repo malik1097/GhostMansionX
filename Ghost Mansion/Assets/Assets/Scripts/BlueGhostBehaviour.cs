@@ -9,6 +9,7 @@ public class BlueGhostBehaviour : MonoBehaviour
     //GameObject ghost;
     //public GameObject prefab;
     private Vector3 randSpawn;
+    public int speed;
     
 
     // Start is called before the first frame update
@@ -68,6 +69,7 @@ public class BlueGhostBehaviour : MonoBehaviour
 
     public void appear()
     {
+        spawnSize();
         foreach (Transform child in transform)
         {
             MeshRenderer renderer = child.GetComponent<MeshRenderer>();
@@ -103,5 +105,10 @@ public class BlueGhostBehaviour : MonoBehaviour
         this.transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
 
     }
-    
+
+    public void spawnSize()
+    {
+        this.transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0.38f, 0.38f, 0.38f), Time.deltaTime * speed);
+    }
+
 }
