@@ -44,18 +44,12 @@ public class BlueGhostBehaviour : MonoBehaviour
         //        renderer.enabled = true;
         //    }
         //}
-        Vector3[] spawns = new Vector3[10];
+        Vector3[] spawns = new Vector3[3];
 
-        spawns[0] = new Vector3(8.46000004f, 1.0999999f, 28.8600006f);
-        spawns[1] = new Vector3(0.0900000036f, 1.75f, 24.5499992f);
-        spawns[2] = new Vector3(13.3310003f, 1.38f, 15.5570002f);
-        spawns[3] = new Vector3(-19.6599998f, 1.58000004f, 6.71999979f);
-        spawns[4] = new Vector3(-20.2000008f, -0.449999988f, 27.4200001f);
-        spawns[5] = new Vector3(-3.79999995f, 0.939999998f, 25.6700001f);
-        spawns[6] = new Vector3(-3.80800009f, 0.859000027f, 7.82299995f);
-        spawns[7] = new Vector3(-10.8199997f, -0.629999995f, 0.50999999f);
-        spawns[8] = new Vector3(2.70799994f, -0.629999995f, -6.16699982f);
-        spawns[9] = new Vector3(-1.73000002f, 1.28999996f, 3.24000001f);
+        spawns[0] = new Vector3(-9.18000031f, 0.569999993f, 10.21f);
+        spawns[1] = new Vector3(2.42000008f, 3.04999995f, 19.7000008f);
+        spawns[2] = new Vector3(17.9899998f, 3.1400001f, 33.3300018f);
+
 
         Debug.Log(spawns.Length);
         int rs = UnityEngine.Random.Range(0, spawns.Length);

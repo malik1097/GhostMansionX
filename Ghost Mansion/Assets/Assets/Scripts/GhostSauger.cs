@@ -41,6 +41,7 @@ public class GhostSauger : MonoBehaviour
     //[SerializeField] public GameObject prefab;
 
     private Vector3 randSpawn;
+    public bool vacuumOn = false;
 
 
     void SetColor(Color c)
@@ -70,9 +71,10 @@ public class GhostSauger : MonoBehaviour
             lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
 
-            if (OVRInput.Get(b))
+            if (OVRInput.Get(b) && gc.end == false)
             {
                 OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.RTouch);
+                vacuumOn = true;
 
                 if (hit.transform.tag.Contains(interactTag))
                 {
@@ -139,6 +141,7 @@ public class GhostSauger : MonoBehaviour
                 suck = false;
                 SetColor(Color.cyan);
                 particleSystem.SetActive(false);
+                vacuumOn = false;
                 //stopAudio();
                
             }
@@ -166,7 +169,7 @@ public class GhostSauger : MonoBehaviour
         float rclose = Vector3.Distance(this.transform.position, rgb.transform.position);
         float yclose = Vector3.Distance(this.transform.position, ygb.transform.position);
 
-        if (bclose <= 10 && bclose < rclose && bclose < yclose)
+        if (bclose <= 7 && bclose < rclose && bclose < yclose)
         {
             
             blue = true;
@@ -175,7 +178,7 @@ public class GhostSauger : MonoBehaviour
 
             bgb.appear();
         }
-        if (rclose <= 10 && rclose < bclose && rclose < yclose)
+        if (rclose <= 7 && rclose < bclose && rclose < yclose)
         {
             
             blue = false;
@@ -184,7 +187,7 @@ public class GhostSauger : MonoBehaviour
 
             rgb.appear();
         }
-        if (yclose <= 10 && yclose < bclose && yclose < rclose)
+        if (yclose <= 7 && yclose < bclose && yclose < rclose)
         {
            
             blue = false;

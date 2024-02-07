@@ -38,8 +38,9 @@ public float TimeforEnd = 100;
  public OVRInput.Button d;
 
 public bool eingesaugt = false;
+public bool end = false;
 
-    public GameObject TutorialObject;
+public GameObject TutorialObject;
 
 [SerializeField] GhostSauger sauger;
 
@@ -118,7 +119,7 @@ public bool eingesaugt = false;
     void OnTriggerEnter(Collider other)
     {
         // Check if the object the player collided with has the "Ghost" tag. && sauger.suck == true
-        if (other.gameObject.tag.Contains("Ghost") )
+        if (other.gameObject.tag.Contains("Ghost") && sauger.vacuumOn == true)
         {
             // Deactivate the collided object (making it disappear).
             foreach (Transform child in other.gameObject.transform)
@@ -172,6 +173,8 @@ void SetEndText(float TimeEnd)
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
+
+            end = true;
 
             if (OVRInput.Get(b))
             {
