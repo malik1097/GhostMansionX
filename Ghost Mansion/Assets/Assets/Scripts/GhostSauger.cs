@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -27,10 +28,19 @@ public class GhostSauger : MonoBehaviour
     private bool colliding = false;
     private bool isCloseEnough;
 
+    private bool blue = false;
+    private bool red = false;
+    private bool yellow = false;
+
     private AudioSource audioSource;
 
-    [SerializeField] GhostBehaviour gb;
+    [SerializeField] RedGhostBehaviour rgb;
+    [SerializeField] YellowGhostBehaviour ygb;
+    [SerializeField] BlueGhostBehaviour bgb;
+    [SerializeField] Ghostcounter gc;
+    //[SerializeField] public GameObject prefab;
 
+    private Vector3 randSpawn;
 
 
     void SetColor(Color c)
@@ -47,7 +57,9 @@ public class GhostSauger : MonoBehaviour
     {
         catchGhost();
         closeEnough();
-        ghostAppear();
+        //ghostAppear();
+        //randomSpawnPosition();
+        //ghostStart();
     }
 
     public void catchGhost()
@@ -60,6 +72,8 @@ public class GhostSauger : MonoBehaviour
 
             if (OVRInput.Get(b))
             {
+                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.RTouch);
+
                 if (hit.transform.tag.Contains(interactTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
@@ -88,10 +102,10 @@ public class GhostSauger : MonoBehaviour
 
                         hit.transform.position = Vector3.MoveTowards(ghostPos, vacuumPos, step);
 
-                        newScale *= 0.99f;
+                        //hit.transform.localScale *= 0.99f;
                         if (newScale.x >= 0.1f && newScale.y >= 0.1f && newScale.z >= 0.1f)
                         {
-                            newScale *= 0.99f;
+                            hit.transform.localScale *= 0.99f;
                         }
                         //float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
                         //float shrinkTime = distance / shrinkSpeed;
@@ -106,8 +120,6 @@ public class GhostSauger : MonoBehaviour
                         //{
 
                         //}
-
-
 
                         SetColor(Color.green);
 
@@ -150,21 +162,79 @@ public class GhostSauger : MonoBehaviour
 
     void closeEnough()
     {
-        float close = Vector3.Distance(this.transform.position, gb.transform.position);
-        if (close <= 50)
+        float bclose = Vector3.Distance(this.transform.position, bgb.transform.position);
+        float rclose = Vector3.Distance(this.transform.position, rgb.transform.position);
+        float yclose = Vector3.Distance(this.transform.position, ygb.transform.position);
+
+        if (bclose <= 10 && bclose < rclose && bclose < yclose)
         {
-            isCloseEnough = true;
+            
+            blue = true;
+            red = false;
+            yellow = false;
+
+            bgb.appear();
+        }
+        if (rclose <= 10 && rclose < bclose && rclose < yclose)
+        {
+            
+            blue = false;
+            red = true;
+            yellow = false;
+
+            rgb.appear();
+        }
+        if (yclose <= 10 && yclose < bclose && yclose < rclose)
+        {
+           
+            blue = false;
+            red = false;
+            yellow = true;
+
+            ygb.appear();
         }
     }
 
-    void ghostAppear()
+
+    public void respawn()
     {
-        if (isCloseEnough)
+        if(gc.eingesaugt)
         {
-            gb.appear();
+            if(blue = true)
+            {
+                bgb.backToSize();
+                bgb.randomSpawnPosition();
+            }
+            if (red = true)
+            {
+                rgb.backToSize();
+                rgb.randomSpawnPosition();
+            }
+            if (yellow = true)
+            {
+                ygb.backToSize();
+                ygb.randomSpawnPosition();
+            }
         }
     }
 
+
+    public void ghostStart()
+    {
+        //Vector3 startPos = new Vector3(-0.4654015f, 2.26f, 13.28f);
+        //ghost.SetActive(true);
+        //Instantiate(prefab, randSpawn, Quaternion.identity);
+        // prefab.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    //public void ghostStart()
+    //{
+    //    Vector3 startPos = new Vector3(-0.4654015f, 3.26f, 13.28f);
+    //    ghost.SetActive(true);
+    //    Instantiate(prefab, startPos, Quaternion.identity);
+    //    Renderer renderChild = prefab.GetComponentInChildren().enabled = true;
+    //    renderChild.enabled = true;
+    //}
 
     //private void OnCollisionEnter(Collision collision)
     //{

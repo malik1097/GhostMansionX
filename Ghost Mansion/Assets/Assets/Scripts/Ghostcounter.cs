@@ -24,20 +24,24 @@ public class Ghostcounter : MonoBehaviour
  public TextMeshProUGUI countText;
 
  public GameObject WinTextObject;
+
+ // UI object to display winning text.
  public TextMeshProUGUI winText;
-
-public GameObject TutorialObject;
-
 
 //Timer f�r Ende
 public GameObject Timer;
 
 public float TimeforEnd = 100;
 
-public OVRInput.Button d;
- public OVRInput.Button b;
 
- [SerializeField] GhostSauger sauger;
+ public OVRInput.Button b;
+ public OVRInput.Button d;
+
+public bool eingesaugt = false;
+
+    public GameObject TutorialObject;
+
+[SerializeField] GhostSauger sauger;
 
     // Start is called before the first frame update.
     void Start()
@@ -54,13 +58,13 @@ public OVRInput.Button d;
   // Update the count display.
         SetCountText();
 
+        // Initially set the win text to be inactive.
 
 
-   
 
-    
-       WinTextObject.SetActive(false);
-       TutorialObject.SetActive(true);
+
+        WinTextObject.SetActive(false);
+        TutorialObject.SetActive(true);
     }
  
 
@@ -68,15 +72,12 @@ public OVRInput.Button d;
   void FixedUpdate() 
     {
         if (OVRInput.Get(d))
-         {
-             TutorialObject.SetActive(false);
+        {
+            TutorialObject.SetActive(false);
         }
-       
         //get Time left from Timer
         TimeforEnd = Timer.GetComponent<Timer>().TimeLeft;
         SetEndText(TimeforEnd);
-
-
 
 
     }
@@ -120,9 +121,18 @@ public OVRInput.Button d;
         if (other.gameObject.tag.Contains("Ghost") )
         {
             // Deactivate the collided object (making it disappear).
-            other.gameObject.SetActive(false);
+            foreach (Transform child in other.gameObject.transform)
+            {
+                MeshRenderer renderer = child.GetComponent<MeshRenderer>();
 
-             AudioSource audioSource = GetComponent<AudioSource>();
+                if (renderer != null)
+                {
+                    renderer.enabled = false;
+                    eingesaugt = true;
+                }
+            }
+
+            AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.Play();
 
             // Increment the count of "PickUp" objects collected.
@@ -130,6 +140,10 @@ public OVRInput.Button d;
 
             // Update the count display.
             SetCountText();
+
+            sauger.respawn();
+
+            eingesaugt = false;
         }
     }
 
@@ -158,7 +172,6 @@ void SetEndText(float TimeEnd)
             WinTextObject.SetActive(true);
             Timer.SetActive(false);
             CountObject.SetActive(false);
-            TutorialObject.SetActive(false);
 
             if (OVRInput.Get(b))
             {
