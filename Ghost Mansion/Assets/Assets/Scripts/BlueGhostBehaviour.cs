@@ -18,7 +18,7 @@ public class BlueGhostBehaviour : MonoBehaviour
     public bool hover = true;
     public float range;
     public float hoverSpeed;
-    private float y;
+    public float y;
 
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
@@ -120,9 +120,13 @@ public class BlueGhostBehaviour : MonoBehaviour
     {
         if (hover == true)
         {
-            float yPos = Mathf.PingPong(Time.time * 1, range) * hoverSpeed;
+            float yPos = Mathf.PingPong(Time.unscaledTime * 1, range) * hoverSpeed;
             Debug.Log(yPos);
             transform.position = new Vector3(transform.position.x, y + yPos, transform.position.z);
+        }
+        else
+        {
+            y = this.transform.position.y;
         }
     }
 }

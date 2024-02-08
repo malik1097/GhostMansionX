@@ -14,7 +14,7 @@ public class RedGhostBehaviour : MonoBehaviour
     public float range;
     public float hoverSpeed;
 
-    private float y;
+    public float y;
 
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
@@ -47,7 +47,7 @@ public class RedGhostBehaviour : MonoBehaviour
         //    MeshRenderer renderer = child.GetComponent<MeshRenderer>();
 
         //    if (renderer != null)
-        //    {
+        //    {suck
         //        renderer.enabled = true;
         //    }
         //}
@@ -112,9 +112,13 @@ public class RedGhostBehaviour : MonoBehaviour
     {
         if (hover == true)
         {
-            float yPos = Mathf.PingPong(Time.time * 1, range) * hoverSpeed;
+            float yPos = Mathf.PingPong(Time.unscaledTime * 1, range) * hoverSpeed;
             Debug.Log(yPos);
             transform.position = new Vector3(transform.position.x, y + yPos, transform.position.z);
+        }
+        else
+        {
+            y = this.transform.position.y;
         }
     }
 }

@@ -63,6 +63,7 @@ public class GhostSauger : MonoBehaviour
         //ghostAppear();
         //randomSpawnPosition();
         //ghostStart();
+        vacuumVibrate();
     }
 
     public void catchGhost()
@@ -75,7 +76,7 @@ public class GhostSauger : MonoBehaviour
 
             if (OVRInput.Get(b) && gc.end == false)
             {
-                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.RTouch);
+                
                 vacuumOn = true;
 
                 if (hit.transform.tag.Contains(interactTag))
@@ -84,7 +85,7 @@ public class GhostSauger : MonoBehaviour
                     rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
                 }
                 suck = true;
-                particleSystem.SetActive(true);
+                
 
                 //playAudio();
 
@@ -140,7 +141,9 @@ public class GhostSauger : MonoBehaviour
                 }
                 else
                 {
-                    
+                    ygb.hover = true;
+                    bgb.hover = true;
+                    rgb.hover = true;
                     SetColor(Color.red);
                 }
             }
@@ -148,12 +151,13 @@ public class GhostSauger : MonoBehaviour
             {
                 suck = false;
                 SetColor(Color.cyan);
-                particleSystem.SetActive(false);
                 vacuumOn = false;
 
-                ygb.hover = true;
-                bgb.hover = true;
-                rgb.hover = true;
+                //rgb.y = hit.transform.position.y;
+                //bgb.y = hit.transform.position.y;
+                //ygb.y = hit.transform.position.y;
+
+               
                 //stopAudio();
 
             }
@@ -233,8 +237,19 @@ public class GhostSauger : MonoBehaviour
         }
     }
 
-    
-
+    public void vacuumVibrate()
+    {
+        if(OVRInput.Get(b))
+        {
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+            particleSystem.SetActive(true);
+        }
+        else
+        {
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+            particleSystem.SetActive(false);
+        }
+    }
 
     public void ghostStart()
     {
