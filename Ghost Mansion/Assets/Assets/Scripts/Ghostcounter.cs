@@ -35,7 +35,7 @@ public float TimeforEnd = 100;
 
 
  public OVRInput.Button b;
- public OVRInput.Button d;
+ //public OVRInput.Button d;
 
 public bool eingesaugt = false;
 public bool end = false;
@@ -43,6 +43,7 @@ public bool end = false;
 public GameObject TutorialObject;
 
 [SerializeField] GhostSauger sauger;
+[SerializeField] Tutorial tutorial;
 
     // Start is called before the first frame update.
     void Start()
@@ -67,15 +68,22 @@ public GameObject TutorialObject;
         WinTextObject.SetActive(false);
         TutorialObject.SetActive(true);
     }
- 
 
- // FixedUpdate is called once per fixed frame-rate frame.
-  void FixedUpdate() 
+
+    // FixedUpdate is called once per fixed frame-rate frame.
+    private void FixedUpdate()
     {
-        if (OVRInput.Get(d))
-        {
-            TutorialObject.SetActive(false);
-        }
+ 
+         setTimer();
+        
+    }
+
+    void setTimer() 
+    {
+        //if (OVRInput.Get(d))
+        //{
+        //    TutorialObject.SetActive(false);
+        //}
         //get Time left from Timer
         TimeforEnd = Timer.GetComponent<Timer>().TimeLeft;
         SetEndText(TimeforEnd);
@@ -118,33 +126,37 @@ public GameObject TutorialObject;
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the object the player collided with has the "Ghost" tag. && sauger.suck == true
-        if (other.gameObject.tag.Contains("Ghost") && sauger.vacuumOn == true)
+        if(tutorial.tutOn == false)
         {
-            // Deactivate the collided object (making it disappear).
-            foreach (Transform child in other.gameObject.transform)
+
+            // Check if the object the player collided with has the "Ghost" tag. && sauger.suck == true
+            if (other.gameObject.tag.Contains("Ghost") && sauger.vacuumOn == true)
             {
-                MeshRenderer renderer = child.GetComponent<MeshRenderer>();
-
-                if (renderer != null)
+                // Deactivate the collided object (making it disappear).
+                foreach (Transform child in other.gameObject.transform)
                 {
-                    renderer.enabled = false;
-                    eingesaugt = true;
+                    MeshRenderer renderer = child.GetComponent<MeshRenderer>();
+
+                    if (renderer != null)
+                    {
+                        renderer.enabled = false;
+                        eingesaugt = true;
+                    }
                 }
+
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.Play();
+
+                // Increment the count of "PickUp" objects collected.
+                count = count + 1;
+
+                // Update the count display.
+                SetCountText();
+
+                sauger.respawn();
+
+                eingesaugt = false;
             }
-
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
-
-            // Increment the count of "PickUp" objects collected.
-            count = count + 1;
-
-            // Update the count display.
-            SetCountText();
-
-            sauger.respawn();
-
-            eingesaugt = false;
         }
     }
 

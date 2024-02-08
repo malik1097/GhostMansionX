@@ -38,6 +38,7 @@ public class GhostSauger : MonoBehaviour
     [SerializeField] YellowGhostBehaviour ygb;
     [SerializeField] BlueGhostBehaviour bgb;
     [SerializeField] Ghostcounter gc;
+    [SerializeField] Tutorial tutorial;
     //[SerializeField] Hover hvr;
     //[SerializeField] public GameObject prefab;
 
@@ -181,36 +182,39 @@ public class GhostSauger : MonoBehaviour
 
     void closeEnough()
     {
-        float bclose = Vector3.Distance(this.transform.position, bgb.transform.position);
-        float rclose = Vector3.Distance(this.transform.position, rgb.transform.position);
-        float yclose = Vector3.Distance(this.transform.position, ygb.transform.position);
-
-        if (bclose <= 7 && bclose < rclose && bclose < yclose)
+        if(tutorial.tutOn == false)
         {
+            float bclose = Vector3.Distance(this.transform.position, bgb.transform.position);
+            float rclose = Vector3.Distance(this.transform.position, rgb.transform.position);
+            float yclose = Vector3.Distance(this.transform.position, ygb.transform.position);
+
+            if (bclose <= 7 && bclose < rclose && bclose < yclose)
+            {
             
-            blue = true;
-            red = false;
-            yellow = false;
+                blue = true;
+                red = false;
+                yellow = false;
 
-            bgb.appear();
-        }
-        if (rclose <= 7 && rclose < bclose && rclose < yclose)
-        {
+                bgb.appear();
+            }
+            if (rclose <= 7 && rclose < bclose && rclose < yclose)
+            {
             
-            blue = false;
-            red = true;
-            yellow = false;
+                blue = false;
+                red = true;
+                yellow = false;
 
-            rgb.appear();
-        }
-        if (yclose <= 7 && yclose < bclose && yclose < rclose)
-        {
+                rgb.appear();
+            }
+            if (yclose <= 7 && yclose < bclose && yclose < rclose)
+            {
            
-            blue = false;
-            red = false;
-            yellow = true;
+                blue = false;
+                red = false;
+                yellow = true;
 
-            ygb.appear();
+                ygb.appear();
+            }
         }
     }
 
@@ -239,15 +243,18 @@ public class GhostSauger : MonoBehaviour
 
     public void vacuumVibrate()
     {
-        if(OVRInput.Get(b))
+        if(tutorial.tutOn == false)
         {
-            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-            particleSystem.SetActive(true);
-        }
-        else
-        {
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
-            particleSystem.SetActive(false);
+            if(OVRInput.Get(b))
+            {
+                particleSystem.SetActive(true);
+                OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);  
+            }
+            else
+            {
+                particleSystem.SetActive(false);
+                OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+            }
         }
     }
 

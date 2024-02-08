@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
 
     public TextMeshProUGUI TimerTxt;
 
+    [SerializeField] Tutorial tutorial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,23 +23,27 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateTimer(TimeLeft);
-
-        if (TimerOn)
+        if(tutorial.tutOn == false)
         {
-            if(TimeLeft > 0)
+
+            updateTimer(TimeLeft);
+
+            if (TimerOn)
             {
-                TimeLeft -= Time.deltaTime;
+                if(TimeLeft > 0)
+                {
+                    TimeLeft -= Time.deltaTime;
                 
-            }
-            else{
-                TimeLeft = 0;
-                //TimerOn = false;
+                }
+                else{
+                    TimeLeft = 0;
+                    //TimerOn = false;
                
 
+                }
             }
+
         }
-        
 
     }
 
