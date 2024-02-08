@@ -18,7 +18,7 @@ public class BlueGhostBehaviour : MonoBehaviour
     public bool hover = true;
     public float range;
     public float hoverSpeed;
-
+    private float y;
 
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
