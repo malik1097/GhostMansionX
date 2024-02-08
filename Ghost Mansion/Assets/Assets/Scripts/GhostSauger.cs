@@ -38,6 +38,7 @@ public class GhostSauger : MonoBehaviour
     [SerializeField] YellowGhostBehaviour ygb;
     [SerializeField] BlueGhostBehaviour bgb;
     [SerializeField] Ghostcounter gc;
+    //[SerializeField] Hover hvr;
     //[SerializeField] public GameObject prefab;
 
     private Vector3 randSpawn;
@@ -52,6 +53,7 @@ public class GhostSauger : MonoBehaviour
     void Start()
     {
         particleSystem.SetActive(false);
+        
     }
 
     void Update()
@@ -89,10 +91,14 @@ public class GhostSauger : MonoBehaviour
                 if (hit.transform.tag.Contains(ghostTag))
                 {
                     Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                    ygb.hover = false;
+                    bgb.hover = false;
+                    rgb.hover = false;
 
-                   
+
                     if (rb != null)
                     {
+                        
                         //rb.AddForce(-transform.forward * Time.deltaTime * speed, ForceMode.Force);
                         //hit.transform.position -= transform.forward * Time.deltaTime * speed;
 
@@ -128,11 +134,13 @@ public class GhostSauger : MonoBehaviour
                     }
                     else
                     {
+                        
                         SetColor(Color.magenta);
                     }
                 }
                 else
                 {
+                    
                     SetColor(Color.red);
                 }
             }
@@ -142,8 +150,12 @@ public class GhostSauger : MonoBehaviour
                 SetColor(Color.cyan);
                 particleSystem.SetActive(false);
                 vacuumOn = false;
+
+                ygb.hover = true;
+                bgb.hover = true;
+                rgb.hover = true;
                 //stopAudio();
-               
+
             }
         }
         else
@@ -220,6 +232,8 @@ public class GhostSauger : MonoBehaviour
             }
         }
     }
+
+    
 
 
     public void ghostStart()

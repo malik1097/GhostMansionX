@@ -163,31 +163,33 @@ public GameObject TutorialObject;
 
 
 // Function to update the displayed count of "PickUp" objects collected.
-void SetEndText(float TimeEnd)
-{
-    // Check if the count has reached or exceeded the win condition.
-    if (TimeEnd == 0)
+    void SetEndText(float TimeEnd)
     {
-            // Display the win text.       
-            winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS! \n\nPress A to Restart";
-            WinTextObject.SetActive(true);
-            Timer.SetActive(false);
-            CountObject.SetActive(false);
+        // Check if the count has reached or exceeded the win condition.
+        if (TimeEnd == 0)
+        {
+                // Display the win text.       
+                winText.text = "YOU CAUGHT " + count.ToString() + " \nGHOSTS! \n\nPress A to Restart";
+                WinTextObject.SetActive(true);
+                Timer.SetActive(false);
+                CountObject.SetActive(false);
 
-            end = true;
+                end = true;
 
-            if (OVRInput.Get(b))
-            {
-                SceneManager.LoadScene("Villa");
+                if (OVRInput.Get(b))
+                {
+                    SceneManager.LoadScene("Villa");
 
+                }
             }
+       else
+        {
+            WinTextObject.SetActive(false);
+            Timer.SetActive(true);
+            CountObject.SetActive(true);
         }
-   else
-    {
-        WinTextObject.SetActive(false);
-        Timer.SetActive(true);
-        CountObject.SetActive(true);
     }
-}
+
+
 
 }

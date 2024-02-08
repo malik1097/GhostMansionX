@@ -7,6 +7,17 @@ using UnityEngine.Rendering;
 public class RedGhostBehaviour : MonoBehaviour
 {
     public int speed;
+    public float amplitude = 0.1f;
+    public float frequency = 0.5f;
+
+    public bool hover = true;
+    public float range;
+    public float hoverSpeed;
+
+    private float y;
+
+    Vector3 posOffset = new Vector3();
+    Vector3 tempPos = new Vector3();
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +25,13 @@ public class RedGhostBehaviour : MonoBehaviour
         //randomStartposition();
         randomSpawnPosition();
         //ghostStart();
+        posOffset = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        hovern();
     }
 
 
@@ -51,6 +63,7 @@ public class RedGhostBehaviour : MonoBehaviour
         //randSpawn = spawns[rs];
         this.transform.position = spawns[rs];
 
+        y = this.transform.position.y;
         //return randSpawn;
 
 
@@ -58,7 +71,7 @@ public class RedGhostBehaviour : MonoBehaviour
 
     public void appear()
     {
-        spawnSize();
+        //spawnSize();
         foreach (Transform child in transform)
         {
             MeshRenderer renderer = child.GetComponent<MeshRenderer>();
@@ -93,5 +106,15 @@ public class RedGhostBehaviour : MonoBehaviour
     public void spawnSize()
     {
         this.transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0.38f, 0.38f, 0.38f), Time.deltaTime * speed);
+    }
+
+    void hovern()
+    {
+        if (hover == true)
+        {
+            float yPos = Mathf.PingPong(Time.time * 1, range) * hoverSpeed;
+            Debug.Log(yPos);
+            transform.position = new Vector3(transform.position.x, y + yPos, transform.position.z);
+        }
     }
 }

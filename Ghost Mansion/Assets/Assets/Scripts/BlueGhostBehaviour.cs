@@ -10,8 +10,18 @@ public class BlueGhostBehaviour : MonoBehaviour
     //public GameObject prefab;
     private Vector3 randSpawn;
     public int speed;
-    
 
+
+    public float amplitude = 0.1f;
+    public float frequency = 0.5f;
+
+    public bool hover = true;
+    public float range;
+    public float hoverSpeed;
+
+
+    Vector3 posOffset = new Vector3();
+    Vector3 tempPos = new Vector3();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +29,13 @@ public class BlueGhostBehaviour : MonoBehaviour
         //randomStartposition();
         randomSpawnPosition();
         //ghostStart();
+        posOffset = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        hovern();
     }
 
 
@@ -46,7 +57,7 @@ public class BlueGhostBehaviour : MonoBehaviour
         //}
         Vector3[] spawns = new Vector3[3];
 
-        spawns[0] = new Vector3(-9.18000031f, 0.569999993f, 10.21f);
+        spawns[0] = new Vector3(-9.18000031f, 1.38f, 10.21f);
         spawns[1] = new Vector3(2.42000008f, 3.04999995f, 19.7000008f);
         spawns[2] = new Vector3(17.9899998f, 3.1400001f, 33.3300018f);
 
@@ -55,7 +66,7 @@ public class BlueGhostBehaviour : MonoBehaviour
         int rs = UnityEngine.Random.Range(0, spawns.Length);
         //randSpawn = spawns[rs];
         this.transform.position = spawns[rs];
-
+        y = this.transform.position.y;
         //return randSpawn;
 
 
@@ -63,7 +74,7 @@ public class BlueGhostBehaviour : MonoBehaviour
 
     public void appear()
     {
-        spawnSize();
+        //spawnSize();
         foreach (Transform child in transform)
         {
             MeshRenderer renderer = child.GetComponent<MeshRenderer>();
@@ -105,4 +116,13 @@ public class BlueGhostBehaviour : MonoBehaviour
         this.transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0.38f, 0.38f, 0.38f), Time.deltaTime * speed);
     }
 
+    void hovern()
+    {
+        if (hover == true)
+        {
+            float yPos = Mathf.PingPong(Time.time * 1, range) * hoverSpeed;
+            Debug.Log(yPos);
+            transform.position = new Vector3(transform.position.x, y + yPos, transform.position.z);
+        }
+    }
 }
