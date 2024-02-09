@@ -115,7 +115,7 @@ public class GhostSauger : MonoBehaviour
                         //hit.transform.localScale *= 0.99f;
                         if (newScale.x >= 0.1f && newScale.y >= 0.1f && newScale.z >= 0.1f)
                         {
-                            hit.transform.localScale *= 0.99f;
+                            hit.transform.localScale *= 0.98f;
                         }
                         //float distance = Vector3.Distance(hit.transform.position, vacuum.transform.position);
                         //float shrinkTime = distance / shrinkSpeed;
@@ -142,9 +142,9 @@ public class GhostSauger : MonoBehaviour
                 }
                 else
                 {
-                    ygb.hover = true;
-                    bgb.hover = true;
-                    rgb.hover = true;
+                    //ygb.hover = true;
+                    //bgb.hover = true;
+                    //rgb.hover = true;
                     SetColor(Color.red);
                 }
             }
@@ -158,9 +158,11 @@ public class GhostSauger : MonoBehaviour
                 //bgb.y = hit.transform.position.y;
                 //ygb.y = hit.transform.position.y;
 
-               
-                //stopAudio();
 
+                //stopAudio();
+                ygb.hover = true;
+                bgb.hover = true;
+                rgb.hover = true;
             }
         }
         else
@@ -196,6 +198,8 @@ public class GhostSauger : MonoBehaviour
                 yellow = false;
 
                 bgb.appear();
+                rgb.disappear();
+                ygb.disappear();
             }
             if (rclose <= 7 && rclose < bclose && rclose < yclose)
             {
@@ -205,6 +209,8 @@ public class GhostSauger : MonoBehaviour
                 yellow = false;
 
                 rgb.appear();
+                bgb.disappear();
+                ygb.disappear();
             }
             if (yclose <= 7 && yclose < bclose && yclose < rclose)
             {
@@ -214,6 +220,8 @@ public class GhostSauger : MonoBehaviour
                 yellow = true;
 
                 ygb.appear();
+                bgb.disappear();
+                rgb.disappear();
             }
         }
     }
@@ -223,17 +231,17 @@ public class GhostSauger : MonoBehaviour
     {
         if(gc.eingesaugt)
         {
-            if(blue = true)
+            if(blue == true)
             {
                 bgb.backToSize();
                 bgb.randomSpawnPosition();
             }
-            if (red = true)
+            if (red == true)
             {
                 rgb.backToSize();
                 rgb.randomSpawnPosition();
             }
-            if (yellow = true)
+            if (yellow == true)
             {
                 ygb.backToSize();
                 ygb.randomSpawnPosition();
